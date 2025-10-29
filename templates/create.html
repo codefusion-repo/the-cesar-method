@@ -1,12 +1,11 @@
-{% extends "frases/base.html" %}
-{% block title %}Nueva frase{% endblock %}
-{% block content %}
+{% extends "base.html" %} {% block title %}Nueva frase{% endblock %} {% block content %}
 <h2>Nueva frase</h2>
-<form method="post">{% csrf_token %}
-  <label>Título</label>
-  {{ form.title }}
+<form method="post">
+  {% csrf_token %}
+  <label>Pista</label>
+  {{ form.clue }}
   <label>Frase</label>
-  {{ form.plaintext }}
+  {{ form.text }}
   <div class="muted">Inserta emojis:</div>
   <div class="emoji-grid" id="emoji-grid">
     <!-- mismo set que en utils.EMOJIS -->
@@ -30,23 +29,24 @@
     <button type="button" class="emoji-btn">🇨🇱</button>
     <button type="button" class="emoji-btn">🚀</button>
   </div>
-  <label>Palabra mágica</label>
-  {{ form.passphrase }}
-  <br><br><button class="btn" type="submit">Guardar cifrada</button>
+  <label>Palabra mágica (Contraseña)</label>
+  {{ form.password }}
+  <br /><br /><button class="btn" type="submit">Guardar cifrada</button>
 </form>
 
 <script>
-const area = document.getElementById("id_plaintext");
-document.querySelectorAll(".emoji-btn").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    const start = area.selectionStart, end = area.selectionEnd;
-    const before = area.value.slice(0, start);
-    const after  = area.value.slice(end);
-    area.value = before + btn.textContent + after;
-    const pos = start + btn.textContent.length;
-    area.setSelectionRange(pos, pos);
-    area.focus();
+  const area = document.getElementById("id_text");
+  document.querySelectorAll(".emoji-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const start = area.selectionStart,
+        end = area.selectionEnd;
+      const before = area.value.slice(0, start);
+      const after = area.value.slice(end);
+      area.value = before + btn.textContent + after;
+      const pos = start + btn.textContent.length;
+      area.setSelectionRange(pos, pos);
+      area.focus();
+    });
   });
-});
 </script>
 {% endblock %}

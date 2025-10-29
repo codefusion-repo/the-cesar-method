@@ -1,24 +1,22 @@
-{% extends "frases/base.html" %}
-{% block title %}Detalle{% endblock %}
-{% block content %}
-<h2>{{ obj.title }}</h2>
+{% extends "base.html" %} {% block title %}Detalle{% endblock %} {% block content %}
+<h2>{{ obj.clue }}</h2>
 <div class="card">
   <div><strong>Cifrado:</strong></div>
-  <pre style="white-space:pre-wrap">{{ obj.ciphertext }}</pre>
+  <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
 </div>
 
 <div class="card">
-  <form method="post">{% csrf_token %}
+  <form method="post">
+    {% csrf_token %}
     <label>Ingresa la palabra mágica para descifrar</label>
-    {{ form.passphrase }}
-    <br><br><button class="btn" type="submit">Descifrar</button>
+    {{ form.password }}
+    <br /><br /><button class="btn" type="submit">Descifrar</button>
   </form>
 </div>
 
 {% if plaintext is not None %}
-  <div class="card">
-    <div><strong>Descifrado:</strong></div>
-    <pre style="white-space:pre-wrap">{{ plaintext }}</pre>
-  </div>
-{% endif %}
-{% endblock %}
+<div class="card">
+  <div><strong>Descifrado:</strong></div>
+  <pre style="white-space: pre-wrap">{{ plaintext }}</pre>
+</div>
+{% endif %} {% endblock %}

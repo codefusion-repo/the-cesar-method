@@ -4,6 +4,60 @@
     <meta charset="utf-8" />
     <title>{% block title %}César Demo{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+        max-width: 920px;
+        margin: 24px auto;
+        padding: 0 12px;
+      }
+      header,
+      footer {
+        margin: 12px 0;
+      }
+      .btn {
+        padding: 6px 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #f8f8f8;
+        cursor: pointer;
+      }
+      .emoji-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 6px;
+      }
+      .emoji-btn {
+        font-size: 20px;
+        padding: 4px 2px;
+        cursor: pointer;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        background: #fff;
+      }
+      textarea,
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+      }
+      .card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 10px 0;
+      }
+      .muted {
+        color: #666;
+        font-size: 12px;
+      }
+      .danger {
+        color: #a00;
+      }
+    </style>
+
     {% block head %}{% endblock %}
   </head>
   <body>

@@ -24,7 +24,7 @@
     text-align: left;
     background-color: rgb(204, 0, 255);
 }
-*/
+
 
 body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;max-width:920px;margin:24px auto;padding:0 12px}
 header,footer{margin:12px 0}
@@ -34,4 +34,4 @@ header,footer{margin:12px 0}
 textarea,input[type=text],input[type=password]{width:100%;padding:8px;border:1px solid #ddd;border-radius:6px}
 .card{border:1px solid #eee;border-radius:10px;padding:12px;margin:10px 0}
 .muted{color:#666;font-size:12px}
-.danger{color:#a00}
+.danger{color:#a00}*/

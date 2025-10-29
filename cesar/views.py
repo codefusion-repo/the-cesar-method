@@ -34,14 +34,18 @@ def create_view(request):
 
             messages.success(request, 'Frase cifrada creada exitosamente.')
             return redirect(reverse('cesar:detail', args=[cesar_phrase.id]))
-        else:
-            form = CesarPhraseForm()
+    else:
+        form = CesarPhraseForm()
 
     return render (request, 'create.html', {'form': form})
     
 def detail_view(request, pk):
+    cesar_phrase = get_object_or_404(Cesar_Phrase, pk=pk)
+    decrypted_text = None
 
-    return render (request, 'detail.html')
+    form = CesarDecryptForm(request.POST or None)
+
+    return render (request, 'detail.html', {'form': form})
 
 def edit_view(request, pk):
     return render (request, 'edit.html')
