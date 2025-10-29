@@ -4,7 +4,12 @@
   <div><strong>Cifrado:</strong></div>
   <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
 </div>
-
+{% if shift is not None %}
+<div class="card">
+  <div><strong>Desplazamiento:</strong></div>
+  <pre style="white-space: pre-wrap">{{ shift }}</pre>
+</div>
+{% endif %} 
 <div class="card">
   <form method="post">
     {% csrf_token %}

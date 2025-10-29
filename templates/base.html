@@ -64,8 +64,8 @@
     <header>
       <h1 style="margin: 0">César Demo</h1>
       <nav>
-        <a href="{% url 'cesar:list' %}">Listado</a> ·
-        <!--<a href="{% url 'cesar:create' %}">Nueva</a>-->
+        <a href="{% url 'cesar:list' %}">Listado</a>
+        <a href="{% url 'cesar:create' %}">Nueva</a>
       </nav>
       <hr />
     </header>
@@ -74,7 +74,7 @@
     {% endfor %} {% endif %} {% block content %}{% endblock %}
     <footer>
       <hr />
-      <p class="muted">Educativo. No usar como criptografía real.</p>
+      <p class="muted"></p>
     </footer>
   </body>
 </html>

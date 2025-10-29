@@ -41,14 +41,26 @@ def create_view(request):
     
 def detail_view(request, pk):
     cesar_phrase = get_object_or_404(Cesar_Phrase, pk=pk)
-    decrypted_text = None
-
+    plaintext = None
+    shift = None
     form = CesarDecryptForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        password = form.cleaned_data['password']
+        if check_password(password, cesar_phrase.pass_hash):
+            shift = derive_shift(password, cesar_phrase.shift_salt)
+            plaintext = cesar_decrypt(cesar_phrase.encrypted, shift)
+        else:
+            messages.error(request, 'Palabra mágica incorrecta. Inténtalo de nuevo.')
 
-    return render (request, 'detail.html', {'form': form})
+    return render (request, 'detail.html', {'form': form, 'obj': cesar_phrase, 'plaintext': plaintext, 'shift': shift})
 
 def edit_view(request, pk):
     return render (request, 'edit.html')
 
 def delete_view(request, pk):
-    return render (request, 'delete.html')
+    cesar_phrase = get_object_or_404(Cesar_Phrase, pk=pk)
+    if request.method == 'POST':
+        cesar_phrase.delete()
+        messages.success(request, 'Frase eliminada exitosamente.')
+        return redirect(reverse('cesar:list'))
+    return render (request, 'delete.html', {'obj': cesar_phrase})
