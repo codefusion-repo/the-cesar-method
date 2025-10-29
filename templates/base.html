@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}César Demo{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<header>
+  <h1 style="margin:0">César Demo</h1>
+  <nav><a href="{% url 'frases:list' %}">Listado</a> · <a href="{% url 'frases:create' %}">Nueva</a></nav>
+  <hr>
+</header>
+{% if messages %}
+  {% for m in messages %}<p class="{{ m.tags }}">{{ m }}</p>{% endfor %}
+{% endif %}
+{% block content %}{% endblock %}
+<footer><hr><p class="muted">Educativo. No usar como criptografía real.</p></footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "frases/base.html" %}
+{% block title %}Listado{% endblock %}
+{% block content %}
+<h2>Frases guardadas</h2>
+{% for it in items %}
+  <div class="card">
+    <strong>{{ it.title }}</strong>
+    <div class="muted">Cifrada: {{ it.ciphertext|truncatechars:120 }}</div>
+    <a class="btn" href="{% url 'frases:detail' it.id %}">Abrir</a>
+    <a class="btn" href="{% url 'frases:delete' it.id %}">Eliminar</a>
+  </div>
+{% empty %}
+  <p>No hay frases aún.</p>
+{% endfor %}
+{% endblock %}
