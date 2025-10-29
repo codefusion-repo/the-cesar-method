@@ -37,12 +37,14 @@ def create_view(request):
         else:
             form = CesarPhraseForm()
 
-        return render (request, 'templates/create.html', {'form': form})
+    return render (request, 'create.html', {'form': form})
     
 def detail_view(request, pk):
-    cesar_phrase = get_object_or_404(Cesar_Phrase, pk=pk)
-    decrypted_text = None
 
-    form = CesarDecryptForm(request.POST or None)
+    return render (request, 'detail.html')
 
-    return
+def edit_view(request, pk):
+    return render (request, 'edit.html')
+
+def delete_view(request, pk):
+    return render (request, 'delete.html')
