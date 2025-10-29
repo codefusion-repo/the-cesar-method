@@ -58,3 +58,10 @@ def cesar_decrypt(text: str, shift: int, alphabet: list[str] = ALPHABET) -> str:
     
     # Retornar la lista unida como una cadena de texto
     return ''.join(out)
+
+# Shift determinístico a partir de palabra mágica + salt
+def derive_shift(password: str, shift_salt: str, alphabet: list[str] = ALPHABET) -> int:
+    n = len(alphabet)
+    h = hashlib.sha256((shift_salt + password).encode("utf-8")).digest()
+    k = int.from_bytes(h, "big") % n
+    return 1 if k == 0 else k

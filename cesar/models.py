@@ -4,7 +4,7 @@ from django.db import models
 class Cesar_Phrase(models.Model):
     clue = models.CharField(max_length=120)
     encrypted = models.TextField()
-    password = models.CharField(max_length=200)
+    pass_hash = models.CharField(max_length=200)
     shift_salt = models.CharField(max_length=32)
 
     created_at = models.DateTimeField(auto_now_add=True)
