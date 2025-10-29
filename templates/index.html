@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Cesar</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+</head>
+<body>
+    <H1>HOLA ESTE ES NUESTRO SERVIDOR HOLA MUNDO</H1>
+
+    <form method="POST" class="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="texto">texto a cifrar</label>
+        <input name="texto" type="text" name="texto" placeholder="Ingrese el texto">
+        <button type="submit">Cifrar</button>
+    </form>
+</body>
+</html>
