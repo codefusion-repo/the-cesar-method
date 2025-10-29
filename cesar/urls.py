@@ -1,11 +1,12 @@
 # cesar/urls.py
 
 from django.urls import path
-from .views import list_view
+from .views import list_view, create_view
 
 app_name = "cesar"
 
 # Define the URL patterns for the cesar app
 urlpatterns = [
-    path("", list_view, name="list"),
+    path('', list_view, name="list"),
+    path('create/', create_view, name="create"),
 ]

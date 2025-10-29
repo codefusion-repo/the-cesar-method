@@ -9,7 +9,7 @@ from .utils import cesar_encrypt, cesar_decrypt, derive_shift
 
 def list_view(request):
     items = Cesar_Phrase.objects.all().order_by('-created_at')
-    return render(request, 'templates/list.html', {'items': items})
+    return render(request, 'list.html', {'items': items})
 
 def create_view(request):
     if request.method == 'POST':
