@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Editar{% endblock %} {% block content %}
+<h2>Editar: {{ obj.clue }}</h2>
+<div class="card">
+  <div><strong>Cifrado:</strong></div>
+  <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
+</div>
+{% if not verified %}
+<form method="post">
+  {% csrf_token %} {{ verify_form.password.label_tag }}<br />
+  {{ verify_form.password }}
+  <br /><br />
+  <button class="btn" type="submit" name="verify" value="1">Verificar</button>
+</form>
+{% else %}
+<form method="post">
+  {% csrf_token %}
+  <label>Pista</label>
+  {{ edit_form.clue }}
+  <label>Frase (texto claro)</label>
+  {{ edit_form.text }}
+
+  <details style="margin: 10px 0">
+    <summary>Cambiar palabra mágica (opcional)</summary>
+    {{ edit_form.new_password.label_tag }}<br />
+    {{ edit_form.new_password }}
+    <p class="muted">
+      Si la cambias, se generará un nuevo desplazamiento y se re-cifrará.
+    </p>
+  </details>
+
+  {{ edit_form.password.label_tag }}
+  {{ edit_form.password }}
+  <!-- revalidación simple -->
+
+  <br /><br />
+  <button class="btn" type="submit" name="save" value="1">
+    Guardar cambios
+  </button>
+</form>
+{% endif %} {% endblock %}

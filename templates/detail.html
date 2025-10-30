@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block title %}Detalle{% endblock %} {% block content %}
 <h2>{{ obj.clue }}</h2>
+<a href="{% url 'cesar:edit' obj.id %}">Editar</a>
 <div class="card">
   <div><strong>Cifrado:</strong></div>
   <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>

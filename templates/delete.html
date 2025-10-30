@@ -1,5 +1,9 @@
 {% extends "base.html" %} {% block title %}Eliminar{% endblock %} {% block content %}
 <h2>Eliminar frase</h2>
+<div class="card">
+  <div><strong>Cifrado:</strong></div>
+  <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
+</div>
 <p>¿Eliminar <strong>{{ obj.clue }}</strong>?</p>
 <form method="post">
   {% csrf_token %}
