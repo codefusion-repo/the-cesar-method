@@ -3,3 +3,4 @@ django-environ
 django-cleanup
 Pillow
 regex
+uvicorn 
