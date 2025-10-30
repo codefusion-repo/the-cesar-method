@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
     <title>{% block title %}César Demo{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Hoja de estilos principal del sitio -->
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}" />
     {% block head %}{% endblock %}
   </head>
   <body>
+    <!-- Cabecera comun con titulo y navegacion -->
     <header>
       <h1>César Demo</h1>
       <nav>
@@ -17,14 +19,17 @@
       </nav>
     </header>
 
+    <!-- Contenedor de mensajes flash (exito, error, etc) -->
     <div class="message-container">
       {% if messages %} {% for m in messages %}
       <p class="{{ m.tags }}">{{ m }}</p>
       {% endfor %} {% endif %}
     </div>
 
+    <!-- Bloque principal donde cada plantilla extiende su contenido -->
     {% block content %}{% endblock %}
 
+    <!-- Pie de pagina con informacion general -->
     <footer>
       <hr />
       <p class="muted">César Demo &copy; {% now "Y" %}</p>

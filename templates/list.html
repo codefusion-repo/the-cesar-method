@@ -1,13 +1,17 @@
 {% extends "base.html" %} {% block title %}Listado{% endblock %} {% block content %}
 <h2>Frases guardadas</h2>
+<!-- Itera sobre todas las frases disponibles en la base de datos -->
 {% for it in items %}
 <div class="card">
+  <!-- Muestra la pista como titulo de la tarjeta -->
   <strong>{{ it.clue }}</strong>
   <div class="muted">Cifrada: {{ it.encrypted|truncatechars:120 }}</div>
+  <!-- Acciones rapidas para ver, editar o eliminar la frase -->
   <a class="btn" href="{% url 'cesar:detail' it.id %}">Abrir</a>
   <a class="btn" href="{% url 'cesar:edit' it.id %}">Editar</a>
   <a class="btn" href="{% url 'cesar:delete' it.id %}">Eliminar</a>
 </div>
 {% empty %}
+<!-- Mensaje informativo cuando aun no existen registros -->
 <p>No hay frases aún.</p>
 {% endfor %} {% endblock %}

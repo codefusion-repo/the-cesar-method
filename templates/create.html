@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block title %}Nueva frase{% endblock %} {% block content %}
 <h2>Nueva frase</h2>
+<!-- Formulario principal para registrar una nueva frase cifrada -->
 <form method="post">
   {% csrf_token %}
   <label>Pista</label>
@@ -34,6 +35,7 @@
   <br /><br /><button class="btn" type="submit">Guardar cifrada</button>
 </form>
 
+<!-- Script ligero para insertar emojis en la posicion del cursor -->
 <script>
   const area = document.getElementById("id_text");
   document.querySelectorAll(".emoji-btn").forEach((btn) => {

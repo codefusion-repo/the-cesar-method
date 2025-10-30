@@ -1,16 +1,19 @@
 {% extends "base.html" %} {% block title %}Detalle{% endblock %} {% block content %}
 <h2>{{ obj.clue }}</h2>
 <a href="{% url 'cesar:edit' obj.id %}">Editar</a>
+<!-- Tarjeta principal con la frase cifrada tal cual se almacena -->
 <div class="card">
   <div><strong>Cifrado:</strong></div>
   <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
 </div>
 {% if shift is not None %}
+<!-- Seccion visible solo cuando el usuario conoce el desplazamiento -->
 <div class="card">
   <div><strong>Desplazamiento:</strong></div>
   <pre style="white-space: pre-wrap">{{ shift }}</pre>
 </div>
 {% endif %} 
+<!-- Formulario para validar la palabra magica y recuperar el texto -->
 <div class="card">
   <form method="post">
     {% csrf_token %}
@@ -21,6 +24,7 @@
 </div>
 
 {% if plaintext is not None %}
+<!-- Resultado descifrado mostrado despues de pasar la validacion -->
 <div class="card">
   <div><strong>Descifrado:</strong></div>
   <pre style="white-space: pre-wrap">{{ plaintext }}</pre>

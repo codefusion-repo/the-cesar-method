@@ -1,10 +1,13 @@
 {% extends "base.html" %} {% block title %}Eliminar{% endblock %} {% block content %}
 <h2>Eliminar frase</h2>
+<!-- Referencia visual del cifrado que se esta a punto de borrar -->
 <div class="card">
   <div><strong>Cifrado:</strong></div>
   <pre style="white-space: pre-wrap">{{ obj.encrypted }}</pre>
 </div>
+<!-- Confirmacion textual para evitar borrar el item incorrecto -->
 <p>¿Eliminar <strong>{{ obj.clue }}</strong>?</p>
+<!-- Formulario sencillo con confirmacion explicita y opcion de cancelar -->
 <form method="post">
   {% csrf_token %}
   <button class="btn danger" type="submit">Eliminar</button>

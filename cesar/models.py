@@ -7,7 +7,9 @@ class Cesar_Phrase(models.Model):
     pass_hash = models.CharField(max_length=200)
     shift_salt = models.CharField(max_length=32)
 
+    # Conserva la fecha de creacion para ordenar y auditar registros
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        # Representacion legible que muestra la pista asociada
         return f"Cesar Phrase (Clue: {self.clue})"

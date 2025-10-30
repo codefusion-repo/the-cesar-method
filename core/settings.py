@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import environ
+# Cargar variables de entorno desde .env para separar configuracion sensible
 env=environ.Env()
 environ.Env.read_env()
 
@@ -24,11 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Clave secreta centralizada en las variables de entorno
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# Flag de depuracion controlado por entorno (usar False en produccion)
 DEBUG = env("DEBUG")
 
+# Lista de hosts permitidos, tambien definida externamente
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Application definition
@@ -82,6 +86,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# Garantiza que cada peticion se ejecute dentro de una transaccion atomica
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Password validation
@@ -119,10 +124,12 @@ SITE_ID = 1
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
+# Directorios relacionados con la recoleccion de archivos estaticos
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+# Ubicacion para archivos subidos por el usuario
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 MEDIA_URL = '/media/'
 

@@ -13,6 +13,7 @@ ALPHABET = ASCII_ALPHABET + SPANISH_SUPPORT + EMOJIS
 
 # Funcion para dividir un texto en grafemas (evita separar caracteres compuestos)
 def _split_grafema(text: str) -> list[str]:
+    # Utiliza la clase \X del modulo regex para respetar combinaciones Unicode
     pattern = r'\X'
     return re.findall(pattern, text)
 
@@ -62,6 +63,9 @@ def cesar_decrypt(text: str, shift: int, alphabet: list[str] = ALPHABET) -> str:
 # Shift determinístico a partir de palabra mágica + salt
 def derive_shift(password: str, shift_salt: str, alphabet: list[str] = ALPHABET) -> int:
     n = len(alphabet)
+    # Hash combinado garantiza desplazamientos repetibles para la misma credencial
     h = hashlib.sha256((shift_salt + password).encode("utf-8")).digest()
+    # El desplazamiento se mantiene en el rango valido del alfabeto
     k = int.from_bytes(h, "big") % n
+    # Forzamos un desplazamiento minimo de 1 para evitar resultados identicos al texto original
     return 1 if k == 0 else k
