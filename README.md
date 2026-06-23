@@ -194,18 +194,3 @@ Este repositorio muestra práctica con:
 Proyecto académico / demo técnica.
 
 No busca ser una herramienta criptográfica segura para uso real. El cifrado César es un algoritmo clásico y educativo, útil para aprender conceptos de cifrado por sustitución, pero no debe usarse para proteger información sensible.
-
----
-
-## Mejoras futuras
-
-Algunas mejoras posibles:
-
-* Agregar tests unitarios para la lógica de cifrado y descifrado.
-* Mejorar validaciones de entrada.
-* Agregar historial de operaciones.
-* Incorporar soporte para caracteres especiales y distintos alfabetos.
-* Agregar capturas de pantalla al README.
-* Publicar una demo desplegada.
-* Crear archivo `.env.example`.
-* Configurar linting/formato automático.
