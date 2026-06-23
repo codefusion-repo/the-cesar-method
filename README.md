@@ -1,27 +1,32 @@
-# The Cesar Method
+<div align="center">
 
-Dashboard web para cifrar y descifrar frases completas usando el **método de cifrado César**, desarrollado con **Django + Python**.
+# The Cesar Method 🔐
 
-El proyecto fue creado como una aplicación web simple para practicar lógica de cifrado, estructura de proyecto Django, manejo de formularios, templates, archivos estáticos, variables de entorno y preparación básica para despliegue.
+### Dashboard web para cifrar y descifrar frases usando el método César
+
+Proyecto desarrollado con **Django + Python** para practicar lógica de cifrado, estructura de aplicaciones web, manejo de formularios, templates, archivos estáticos y configuración por variables de entorno.
+
+</div>
 
 ---
 
 ## Vista general
 
-El cifrado César es una técnica clásica de sustitución en la que cada letra del mensaje se desplaza una cantidad fija de posiciones dentro del alfabeto.
-Esta aplicación permite ingresar texto, definir un desplazamiento y obtener el resultado cifrado o descifrado desde una interfaz web.
+**The Cesar Method** es una aplicación web simple que permite ingresar una frase, definir un desplazamiento y obtener el texto cifrado o descifrado utilizando el **cifrado César**.
+
+El cifrado César es una técnica clásica de sustitución en la que cada letra del mensaje se desplaza una cantidad fija de posiciones dentro del alfabeto. En este proyecto se utiliza con fines educativos para practicar lógica, estructura de código y flujo básico de una aplicación Django.
 
 ---
 
-## Características
+## Funcionalidades
 
-* Cifrado de frases completas con desplazamiento configurable.
+* Cifrado de frases completas.
 * Descifrado de texto previamente cifrado.
+* Desplazamiento configurable.
 * Interfaz web construida con templates de Django.
 * Separación entre configuración, aplicación principal, templates y archivos estáticos.
-* Manejo de variables de entorno para configuración local.
+* Uso de variables de entorno para configuración local.
 * Preparación básica para despliegue en Render.
-* Uso de entorno virtual y dependencias declaradas en `requirements.txt`.
 
 ---
 
@@ -31,9 +36,8 @@ Esta aplicación permite ingresar texto, definir un desplazamiento y obtener el 
 * **Django**
 * **HTML**
 * **CSS**
-* **Shell script**
 * **django-environ**
-* **Render** para despliegue
+* **Render**
 
 ---
 
@@ -41,8 +45,8 @@ Esta aplicación permite ingresar texto, definir un desplazamiento y obtener el 
 
 ```txt
 the-cesar-method/
-├── cesar/              # Configuración principal del proyecto Django
-├── core/               # Aplicación principal
+├── cesar/              # Aplicación principal
+├── core/               # Configuración del proyecto Django
 ├── render/             # Scripts/configuración de despliegue
 ├── static/
 │   └── styles/         # Archivos CSS
@@ -51,17 +55,6 @@ the-cesar-method/
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-## Requisitos previos
-
-Antes de ejecutar el proyecto, asegúrate de tener instalado:
-
-* Python 3.11 o superior
-* pip
-* venv o virtualenv
-* Git
 
 ---
 
@@ -94,7 +87,7 @@ En Linux/macOS:
 source .venv/bin/activate
 ```
 
-Actualiza pip e instala las dependencias:
+Instala las dependencias:
 
 ```bash
 python -m pip install --upgrade pip
@@ -105,11 +98,9 @@ pip install -r requirements.txt
 
 ## Variables de entorno
 
-El proyecto usa variables de entorno para manejar configuración sensible o dependiente del entorno.
-
 Crea un archivo `.env` dentro de la carpeta `core/`:
 
-```bash
+```txt
 core/.env
 ```
 
@@ -121,17 +112,17 @@ SECRET_KEY=coloca_aqui_una_clave_segura
 ALLOWED_HOSTS=127.0.0.1,localhost
 ```
 
-Puedes generar una `SECRET_KEY` segura ejecutando:
+Puedes generar una `SECRET_KEY` segura con:
 
 ```bash
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-> Importante: no subas archivos `.env` al repositorio. Usa un archivo `.env.example` si necesitas documentar variables sin exponer valores reales.
+> Importante: no subas archivos `.env` al repositorio. Para documentar variables sin exponer valores reales, usa un archivo `.env.example`.
 
 ---
 
-## Preparar la base de datos
+## Ejecutar el proyecto
 
 Aplica las migraciones:
 
@@ -139,23 +130,13 @@ Aplica las migraciones:
 python manage.py migrate
 ```
 
-Opcionalmente, crea un superusuario para acceder al panel de administración de Django:
-
-```bash
-python manage.py createsuperuser
-```
-
----
-
-## Ejecutar en desarrollo
-
-Inicia el servidor local:
+Inicia el servidor de desarrollo:
 
 ```bash
 python manage.py runserver
 ```
 
-Luego abre la aplicación en:
+Abre la aplicación en:
 
 ```txt
 http://127.0.0.1:8000/
@@ -163,27 +144,15 @@ http://127.0.0.1:8000/
 
 ---
 
-## Scripts útiles
-
-El proyecto incluye un script de build para Render:
-
-```txt
-render/build.sh
-```
-
-Este script está pensado para preparar el despliegue instalando dependencias, recolectando archivos estáticos y aplicando migraciones según la configuración del entorno.
-
----
-
 ## Qué demuestra este proyecto
 
 Este repositorio muestra práctica con:
 
-* Estructura base de proyectos Django.
-* Separación entre proyecto, aplicación, templates y archivos estáticos.
-* Uso de variables de entorno.
-* Manejo de dependencias con `requirements.txt`.
+* Estructura base de un proyecto Django.
+* Uso de views, templates y archivos estáticos.
+* Manejo de formularios y flujo de usuario.
 * Implementación de lógica de negocio simple en Python.
+* Configuración mediante variables de entorno.
 * Preparación básica para despliegue.
 * Documentación de instalación y ejecución local.
 
