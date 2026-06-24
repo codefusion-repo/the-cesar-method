@@ -6,7 +6,7 @@
 
 Proyecto desarrollado con **Django + Python** para practicar lógica de cifrado, estructura de aplicaciones web, manejo de formularios, templates, archivos estáticos y configuración por variables de entorno.
 
-Url para pruebas: https://the-cesar-method.onrender.com/
+URL de pruebas: https://the-cesar-method.onrender.com/
 </div>
 
 ---
